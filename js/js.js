@@ -1,5 +1,3 @@
-
-
 var winner;
 var winConditions = [[0,1,2], [3,4,5], [6,7,8],
                        [0,3,6], [1,4,7], [2,5,8],
@@ -8,6 +6,8 @@ var gameOver;
 var counter;
 var o_moves = [];
 var x_moves = [];
+var o_win = 0;
+var x_win = 0;
 // $(document).ready(function(){
 
 var boxes = [...document.getElementsByClassName('tic-tac-button')];
@@ -29,7 +29,13 @@ reset_button.addEventListener("click", reset);
       if(box.innerText!=''){
         // event.preventDefault();
         document.querySelector(".already").style.display = "block";
-      }else{
+      }
+      else if (counter === 9) {
+        document.querySelector(".alert").style.display = "block";
+        reset();
+        counter = 0;
+      }
+      else{
         document.querySelector(".already").style.display = "none";
         if (counter % 2 === 0){ //if counter is EVEN then put O
           box.innerText = "O";
@@ -37,19 +43,21 @@ reset_button.addEventListener("click", reset);
           o_moves.push(boxes.indexOf(box));
           if(checkWin(o_moves)){
             document.getElementsByClassName("messageO")[0].style.display = "block";
+            o_win++;
+            document.getElementById("o_win").innerText = o_win;
             fillSpace();
           }
 
-          //TO DO check for win
         } else { //if counter is ODD put X
           box.innerText = "X";
           box.className += ' playerX'; //adding class name "player X" to this box
           x_moves.push(boxes.indexOf(box));
           if(checkWin(x_moves)){
             document.getElementsByClassName("messageX")[0].style.display = "block";
+            x_win++;
+            document.getElementById("x_win").innerText = x_win;
             fillSpace();
           }
-          //TO DO check for win
         }
         // increase count by 1
         counter++;
@@ -76,11 +84,13 @@ function checkWin(moves){
 
 function reset(){
   boxes.forEach(function(box){
-    box.innerText = "";
+  box.innerText = "";
+  box.style.color = 'black';
   })
   document.querySelector(".already").style.display = "none";
   document.querySelector(".messageO").style.display = "none";
   document.querySelector(".messageX").style.display = "none";
+  document.querySelector(".alert").style.display = "none";
   o_moves = [];
   x_moves =[];
   counter = 1;
