@@ -31,7 +31,6 @@ reset_button.addEventListener("click", reset);
       }
       else if (counter === 9) {
         document.querySelector(".alert").style.display = "block";
-        reset();
         counter = 0;
       }
       else{
