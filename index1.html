@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- link to custom stylesheet (always require after Bootstrap) -->
+  <link rel="stylesheet" href="css/style1.css" media="screen" title="no title" charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <!-- link to custom javascript file (always require after external JS libraries) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/js.js"></script>
+
+  <title>Tic Tac Toe</title>
+</head>
+<body>
+
+<h1>Tic Tac Toe</h1>
+<!--counter-->
+<div class="counters">
+  <div class= "counter"><span>O won </span><strong id="o_win">0</strong><span> time(s)</span></div>
+  <div class= "counter" counter"><span>X won </span><strong id="x_win">0</strong><span> time(s)</span></div>
+</div>
+
+<!--tic tac toe board-->
+<div id="board">
+<div class="message messageO end-message">Player O Wins</div>
+<div class="message messageX end-message">Player X Wins</div>
+  <ul class="rows">
+    <li id="one" class="tic-tac-button"><a href="#"></a></li>
+    <li id="two" class="tic-tac-button"><a href="#"></a></li>
+    <li id="three" class="tic-tac-button"><a href="#"></a></li>
+  </ul>
+  <ul class="rows">
+    <li id="four" class="tic-tac-button"><a href="#"></a></li>
+    <li id="five" class="tic-tac-button"><a href="#"></a></li>
+    <li id="six" class="tic-tac-button"><a href="#"></a></li>
+  </ul>
+  <ul class="rows">
+    <li id="seven" class="tic-tac-button"><a href="#"></a></li>
+    <li id="eight" class="tic-tac-button"><a href="#"></a></li>
+    <li id="nine" class="tic-tac-button"><a href="#"></a></li>
+  </ul>
+
+
+</div>
+
+  <!--reset button-->
+<div class="reset"><a href="#" id="reset" class="btn-success btn span3" >Restart</a></div>
+<div class="push"></div>
+</body>
+
+<footer class="clearfix">Made with love, coffee, tears, and a lot of hard work by: Sophia</footer>
+
+</html>
