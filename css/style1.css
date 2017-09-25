@@ -36,8 +36,28 @@ h1{
   padding: 60px 300px 80px 300px
 }
 
-.message{
+.messageO{
   display:none;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.messageX{
+  display:none;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.alert{
+  display:none;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.already{
+  display:none;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .rows{
@@ -83,7 +103,7 @@ h1{
 }
 
 .push{
-  height: 300px;
+  height: 100px;
   background-color: #14bdac;
 }
 
