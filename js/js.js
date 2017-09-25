@@ -1,16 +1,45 @@
 
-var board;
-var player;
+
+var winner;
 var winConditions = [[0,1,2], [3,4,5], [6,7,8],
                        [0,3,6], [1,4,7], [2,5,8],
                        [0,4,8], [6,4,2]]
 var gameOver;
+var counter;
+
+// $(document).ready(function(){
+
+  var boxes = [...document.getElementsByClassName('tic-tac-button')];
+
+  // if winner === Player O start counter at 0
+  if (winner === "Player O"){
+    counter = 0;
+  } else {
+    counter = 1;
+  }
+  // else start counter at 1
 
 
-$(document).ready(function(){
+  boxes.forEach(function(box){
+    box.addEventListener('click', function(event){
+      //add O's are when count is even and X when it's odd
+      console.log(counter);
+      if (counter % 2 === 0){
+        box.innerText = "O";
+        box.className += ' playerO';
+      } else {
+        box.innerText = "X";
+        box.className += ' playerX';
+      }
+      // increase count by 1
+      counter++;
+    })
+  });
+
+
   var x = "x";
   var o = "o";
-  var count = 0;
+  var count = 0; //O's are when count is even and X when it's odd
   var o_win = 0;
   var x_win = 0;
   $(".tic-tac-button").click(function(){
@@ -40,15 +69,15 @@ $(document).ready(function(){
       $("#five").hasClass('o') &&
       $("#seven").hasClass('o'))
         {
-          alert('O is the winner! Click restart to play again.');
+          $(".messageX").hide();
           $(".messageO").show();
+          winner = "Player O";
           $(".tic-tac-button").text(" ");
           $(".tic-tac-button").removeClass("disable");
           $(".tic-tac-button").removeClass('o');
           $(".tic-tac-button").removeClass('x');
         }
-    else if
-      ($("#one").hasClass("x") &&
+    else if($("#one").hasClass("x") &&
       $("#two").hasClass('x') &&
       $("#three").hasClass('x') ||
       $("#four").hasClass('x') &&
@@ -73,32 +102,67 @@ $(document).ready(function(){
       $("#five").hasClass('x') &&
       $("#seven").hasClass('x'))
         {
-          alert('X wins is the winner! Click restart button to play again.');
+          $(".messageO").hide();
           $(".messageX").show();
           $(".tic-tac-button").text(" ");
           $(".tic-tac-button").removeClass("disable");
           $(".tic-tac-button").removeClass('o');
           $(".tic-tac-button").removeClass('x');
-          //put clear board function
         }
-      else if (count === 9){
-        alert("It's a tie. It will restart");
-        $(".tic-tac-button").text(" ");
-        $(".tic-tac-button").removeClass('disable');
-        $(".tic-tac-button").removeClass('o');
-        $(".tic-tac-button").removeClass('x');
-        count = 0;
+    else if (count === 9){
+      $(".alert").show();
+      $(".tic-tac-button").text(" ");
+      $(".tic-tac-button").removeClass('disable');
+      $(".tic-tac-button").removeClass('o');
+      $(".tic-tac-button").removeClass('x');
+      count = 0;
+       }
+    else if ($(this).hasClass('disable'))
+      {
+        $(".already").show();
       }
-      else if ($(this).hasClass('disable'))
-        {
-          alert("already selected")
-        }
-      else if (count%2 ===0){
-        count++
-        $(this).text(o);
-        $(this).addClass("disable o");
+    else if (count%2 ===0){
+      count++
+      $(this).text(x);
+      $(this).addClass("disable x");
 
-        if($("#one").hasClass('o') &&
+        if($("#one").hasClass('x') &&
+        $("#two").hasClass('x') &&
+        $("#three").hasClass('x') ||
+        $("#four").hasClass('x') &&
+        $("#five").hasClass('x') &&
+        $("#six").hasClass('x') ||
+        $("#seven").hasClass('x') &&
+        $("#eight").hasClass('x') &&
+        $("#nine").hasClass('x') ||
+        $("#one").hasClass('x') &&
+        $("#four").hasClass('x') &&
+        $("#seven").hasClass('x') ||
+        $("#two").hasClass('x') &&
+        $("#five").hasClass('x') &&
+        $("#eight").hasClass('x') ||
+        $("#three").hasClass('x') &&
+        $("#six").hasClass('x') &&
+        $("#nine").hasClass('x') ||
+        $("#one").hasClass('x') &&
+        $("#five").hasClass('x') &&
+        $("#nine").hasClass('x') ||
+        $("#three").hasClass('x') &&
+        $("#five").hasClass('x') &&
+        $("#seven").hasClass('x'))
+          {
+           $(".messageO").hide();
+           $(".messageX").show();
+           count = 0;
+           x_win++;
+           $('#x_win').text(x_win);
+          }
+    }
+    else {
+      count++
+      $(this).text(o);
+      $(this).addClass("disable o");
+      if ($("#one").hasClass('o') &&
         $("#two").hasClass('o') &&
         $("#three").hasClass('o') ||
         $("#four").hasClass('o') &&
@@ -122,59 +186,30 @@ $(document).ready(function(){
         $("#three").hasClass('o') &&
         $("#five").hasClass('o') &&
         $("#seven").hasClass('o'))
-        {
-         alert('O wins');
-         count = 0;
-         o_win++;
-         $('#o_win').text(o_win);
-        }
-      }
-      else {
-        count++
-        $(this).text(x);
-        $(this).addClass("disable x");
-        if ($("#one").hasClass('x') &&
-          $("#two").hasClass('x') &&
-          $("#three").hasClass('x') ||
-          $("#four").hasClass('x') &&
-          $("#five").hasClass('x') &&
-          $("#six").hasClass('x') ||
-          $("#seven").hasClass('x') &&
-          $("#eight").hasClass('x') &&
-          $("#nine").hasClass('x') ||
-          $("#one").hasClass('x') &&
-          $("#four").hasClass('x') &&
-          $("#seven").hasClass('x') ||
-          $("#two").hasClass('x') &&
-          $("#five").hasClass('x') &&
-          $("#eight").hasClass('x') ||
-          $("#three").hasClass('x') &&
-          $("#six").hasClass('x') &&
-          $("#nine").hasClass('x') ||
-          $("#one").hasClass('x') &&
-          $("#five").hasClass('x') &&
-          $("#nine").hasClass('x') ||
-          $("#three").hasClass('x') &&
-          $("#five").hasClass('x') &&
-          $("#seven").hasClass('x'))
-            {
-              alert("X wins");
-              count = 0;
-              x_win++
-              $('#x_win').text(x_win)
+          {
+            $(".messageX").hide();
+            $(".messageO").show();
+            count = 0;
+            o_win++
+            $('#o_win').text(o_win)
+            winner = "Player O"
             }
         }
      });
 
   $("#reset").click(function () {
     $(".tic-tac-button").text(" ");
-    $("#game li").removeClass('disable');
-    $("#game li").removeClass('o');
-    $("#game li").removeClass('x');
+    $(".tic-tac-button").removeClass('disable');
+    $(".tic-tac-button").removeClass('o');
+    $(".tic-tac-button").removeClass('x');
+    $(".messageO").hide();
+    $(".messageX").hide();
+    $(".alert").hide();
     count = 0;
+    counter = 0;
   });
 
-});
+// });
 
 //1st player clicks on a space
 //an X appears
@@ -202,14 +237,7 @@ $(document).ready(function(){
 // });
 
 
-// var boxes = [...document.querySelectorAll('li')];
-// console.log(boxes);
 
-// boxes.forEach(function(box){
-//   box.addEventListener('click', function(event){
-//     box.innerText = "X";
-//     console.log("yay! this works!");
-//   })
 
-// });
+
 

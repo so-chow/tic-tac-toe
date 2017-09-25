@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <!-- link to custom javascript file (always require after external JS libraries) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/js.js"></script>
+
 
   <title>Tic Tac Toe</title>
 </head>
@@ -22,22 +22,24 @@
 
 <!--tic tac toe board-->
 <div id="board">
-<div class="message messageO end-message">Player O Wins</div>
-<div class="message messageX end-message">Player X Wins</div>
+<div class="already">This space is taken, please select another.</div>
+<div class="alert">It's a tie! It will restart.</div>
+<div class="message messageO end-message">Player O Wins!! Press replay to clear the board!</div>
+<div class="message messageX end-message">Player X Wins!! Press replay to clear the board!</div>
   <ul class="rows">
-    <li id="one" class="tic-tac-button"><a href="#"></a></li>
-    <li id="two" class="tic-tac-button"><a href="#"></a></li>
-    <li id="three" class="tic-tac-button"><a href="#"></a></li>
+    <li id="one" class="tic-tac-button"><a href="#"> </a></li>
+    <li id="two" class="tic-tac-button"><a href="#"> </a></li>
+    <li id="three" class="tic-tac-button"><a href="#"> </a></li>
   </ul>
   <ul class="rows">
-    <li id="four" class="tic-tac-button"><a href="#"></a></li>
-    <li id="five" class="tic-tac-button"><a href="#"></a></li>
-    <li id="six" class="tic-tac-button"><a href="#"></a></li>
+    <li id="four" class="tic-tac-button"><a href="#"> </a></li>
+    <li id="five" class="tic-tac-button"><a href="#"> </a></li>
+    <li id="six" class="tic-tac-button"><a href="#"> </a></li>
   </ul>
   <ul class="rows">
-    <li id="seven" class="tic-tac-button"><a href="#"></a></li>
-    <li id="eight" class="tic-tac-button"><a href="#"></a></li>
-    <li id="nine" class="tic-tac-button"><a href="#"></a></li>
+    <li id="seven" class="tic-tac-button"><a href="#"> </a></li>
+    <li id="eight" class="tic-tac-button"><a href="#"> </a></li>
+    <li id="nine" class="tic-tac-button"><a href="#"> </a></li>
   </ul>
 
 
@@ -46,8 +48,10 @@
   <!--reset button-->
 <div class="reset"><a href="#" id="reset" class="btn-success btn span3" >Restart</a></div>
 <div class="push"></div>
+<footer class="clearfix">Made with love, coffee, tears, and a lot of hard work by: Sophia</footer>
+<script src="js/js.js"></script>
 </body>
 
-<footer class="clearfix">Made with love, coffee, tears, and a lot of hard work by: Sophia</footer>
+
 
 </html>
