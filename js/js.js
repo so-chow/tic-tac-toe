@@ -1,8 +1,6 @@
-var winner;
 var winConditions = [[0,1,2], [3,4,5], [6,7,8],
                        [0,3,6], [1,4,7], [2,5,8],
                        [0,4,8], [6,4,2]]
-var gameOver;
 var counter;
 var o_moves = [];
 var x_moves = [];
@@ -48,7 +46,8 @@ reset_button.addEventListener("click", reset);
             fillSpace();
           }
 
-        } else { //if counter is ODD put X
+        }
+        else { //if counter is ODD put X
           box.innerText = "X";
           box.className += ' playerX'; //adding class name "player X" to this box
           x_moves.push(boxes.indexOf(box));
